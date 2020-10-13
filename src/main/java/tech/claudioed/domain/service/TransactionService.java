@@ -22,7 +22,7 @@ public class TransactionService {
   public PaymentData pay(TransactionRequest transactionRequest){
     final var transactionResult = this.transactionDecider.decide();
     final var payment = new Payment(UUID.randomUUID().toString(),
-        BigDecimal.valueOf(Long.parseLong(transactionRequest.getValue())),
+        BigDecimal.valueOf(Double.parseDouble(transactionRequest.getValue())),
         LocalDateTime.now());
     return new PaymentData(payment,transactionResult);
   }

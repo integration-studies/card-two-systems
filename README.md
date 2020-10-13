@@ -1,8 +1,4 @@
-# card-two-systems project
-
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+# Card Two
 
 ## Running the application in dev mode
 
@@ -19,12 +15,23 @@ Be aware that it’s not an _über-jar_ as the dependencies are copied into the 
 
 The application is now runnable using `java -jar target/card-two-systems-1.0-SNAPSHOT-runner.jar`.
 
-## Creating a native executable
+## Docker Build
 
-You can create a native executable using: `./mvnw package -Pnative`.
+### JVM
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: `./mvnw package -Pnative -Dquarkus.native.container-build=true`.
+```shell script
+docker build -f src/main/docker/Dockerfile.jvm -t claudioed/card-two .
+```
 
-You can then execute your native executable with: `./target/card-two-systems-1.0-SNAPSHOT-runner`
+### NATIVE
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image.
+Build Artifact
+
+```shell script
+mvn package -Pnative -Dquarkus.native.container-build=true
+```
+
+Build image
+```shell script
+# docker build -f src/main/docker/Dockerfile.native -t claudioed/card-two:native .
+```
